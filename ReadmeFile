@@ -18,7 +18,7 @@ Follow Steps below to install Kubernetes Cluster
 1. Login to master node, clone this repo and run Script under "installation_scripts" folder of repository on worker node
   
      $ git clone https://github.com/cloud-dev-user/kubernetes_demo.git
-     $ cd kubernetes_demo/instllation_scripts
+     $ cd kubernetes_demo/installation_scripts
 
 2. Update file "hostname.txt" with ip v4 address of master and worker node.  you can refer sample file in this repository.
 
@@ -38,7 +38,7 @@ Follow Steps below to install Kubernetes Cluster
 
 5. Now, Login to Worker node, clone this repo and run Script under "installation_scripts" folder of repository on worker node
   $ git clone https://github.com/cloud-dev-user/kubernetes_demo.git
-  $ cd kubernetes_demo/instllation_scripts
+  $ cd kubernetes_demo/installation_scripts
   $ ./pre_configure_k8s_worker.sh    # press "enter" key wherever prompted
 
 6.  Run the command on worker node. This 
