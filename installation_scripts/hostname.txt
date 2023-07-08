@@ -1,0 +1,2 @@
+172.31.0.65 k8smaster.ssktraining.com  k8smaster
+172.31.0.96 k8sworker.ssktraining.com  k8sworker
