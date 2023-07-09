@@ -1,0 +1,17 @@
+Examples for Kuberentes operations:
+
+Running pod in given namespace
+Create deployment for stateless application with labels and check pods with selector
+Create statefulset in Kubernetes  
+create job in kubernetes 
+create daemonset in kubernetes
+Replica controller in kubernetes
+Scaling up and down application in kubernetes
+Creating service for stateful application using Nodeport and exposing it to outside world 
+Create secrets for docker registry and create pod using the same secret
+Create service using clusterIP and Load balancer for application 
+Creating and using configmaps in kubernetes 
+Creating Scheduler policy in kubernetes
+Affinity and anti-affinity in kubernetes 
+Creating volume and creating pod using the created volume 
+Demo to create and deploy  Kubernetes Dashboard 
