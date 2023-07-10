@@ -1,0 +1,29 @@
+#Create deployment for stateless application(  with labels and check pods with selector
+
+1. Create yaml file "stateless_app_demo.yaml" with following contents and deploy it with kubectl 
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: my-app
+  template:
+    metadata:
+      labels:
+        run: my-app
+    spec:
+      containers:
+      - name: hello-app
+        image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+```
+2. Run the following commands to create deployment for stateless application.
+
+$ kubectl apply -f stateless_app_demo.yaml
+
+3. To check pods running with labels 
+
+$ kubectl get pods -l run=my-app
