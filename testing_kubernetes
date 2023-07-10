@@ -1,0 +1,22 @@
+# Testing Kubernetes
+
+1. Deploy nginx application 
+
+  $ kubectl create deployment nginx-app --image=nginx --replicas=2
+
+2. Create Service to expose your nginx to outside world. 
+
+  $ kubectl expose deployment nginx-app --type=NodePort --port=80
+
+3. Check if service is created and its running on which nodeport
+
+   $ kubectl get svc nginx-app
+   $ kubectl describe svc nginx-app
+
+4. Verify your nginx application using following url on browser 
+    http://< ip-addr of your worker node>: < nodeport from step3 output> 
+e.g. 
+        http://3.14.56.145:31345
+
+
+   
