@@ -1,0 +1,25 @@
+# Create POD in given namespace 
+
+1. Create Namespace wiht following command
+ $ kubectl create namespace demo
+
+2. Create yaml file with following contents and name it as mypod.yaml
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  namespace: test
+  labels:
+    name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: nginx
+```
+
+3. Create pod using the above yaml in "demo" namespace
+
+```
+ $ kubectl apply -f mypod.yaml -n demo 
+```
