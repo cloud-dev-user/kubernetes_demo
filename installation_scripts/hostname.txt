@@ -1,2 +1,2 @@
-172.31.0.184 k8smaster.ssktraining.com  k8smaster
-172.31.0.164 k8sworker.ssktraining.com  k8sworker
+172.31.0.236 k8smaster.ssktraining.com  k8smaster
+172.31.0.173 k8sworker.ssktraining.com  k8sworker

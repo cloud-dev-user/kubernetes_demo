@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-new
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: my-app-new
+  template:
+    metadata:
+      labels:
+        run: my-app-new
+    spec:
+      containers:
+      - name: hello-app-new
+        image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
