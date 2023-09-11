@@ -1,0 +1,10 @@
+version: '3'
+services:
+  webapp:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+  database:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: mypassword
