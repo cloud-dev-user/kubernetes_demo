@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: my-image
+    env:
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: database-config
+          key: database_host
+    - name: DATABASE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: database-config
+          key: database_port
+  volumes:
+  - name: database-config
+    configMap:
+      name: database-config
