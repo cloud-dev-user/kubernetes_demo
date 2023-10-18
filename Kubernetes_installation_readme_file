@@ -51,7 +51,7 @@ Follow Steps below to install Kubernetes Cluster
    $ sudo kubeadm join k8smaster.ssktraining.com:6443 --token cw35sq.owyc84gqa1d1j43l \
         --discovery-token-ca-cert-hash sha256:8ecfc49173714c5991cfaeeb3ed90f44222cc7ac237a07afc2afe9716192b433
 
-7.  On Master node,  Run following command to ccheck if worker node is added or not 
+7.  On Master node,  Run following command to check if worker node is added or not 
 
    $ kubectl get nodes
     sample output should look like below. 
@@ -59,13 +59,18 @@ Follow Steps below to install Kubernetes Cluster
     k8smaster.ssktraining.com   NotReady   control-plane   9m28s   v1.27.3
     k8sworker.ssktraining.com   NotReady    none           1m20s   v1.27.3
     
-8. Install CNI provider "calico" for pod network 
+8. On Master Node, Install CNI provider "calico" for pod network 
 
     $ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
 
-9. Verify now all pods are in "running" state which are required for kubernetes cluster and then node are in "Ready" Status 
+9. On Master Nodes, Verify now all pods are in "running" state which are required for kubernetes cluster and then node are in "Ready" Status 
 
      $ kubectl get pods -n kube-system 
      $ kubectl get nodes 
 
 Congratulations, your kubernetes cluster is ready for use.
+NOTE: 
+
+id you missed out command to register your working node to master while running kubeadm init... command , you can print that command using following 
+
+$ `kubeadm token create --print-join-command`
