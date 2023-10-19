@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    volumes:
+    - name: my-emptydir
+      emptyDir: {}
+    - name: my-hostpath
+      hostPath:
+        path: /var/log/nginx
+    volumeMounts:
+    - name: my-emptydir
+      mountPath: /tmp
+    - name: my-hostpath
+      mountPath: /var/log/nginx
