@@ -1,0 +1,84 @@
+To create a persistent volume (PV) and persistent volume claim (PVC) in Kubernetes and then attach it to a pod, you can follow these steps:
+
+1. **Create a PV object.**
+
+```
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/pvs/my-pv
+```
+
+This PV object will create a 1Gi PV on the host machine at the `/mnt/pvs/my-pv` path.
+
+2. **Create a PVC object.**
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+This PVC object will request a 1Gi PV with the ReadWriteOnce access mode.
+
+3. **Create a pod object.**
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:latest
+    volumeMounts:
+    - name: my-volume
+      mountPath: /mnt/pvs/my-pv
+  volumes:
+  - name: my-volume
+    persistentVolumeClaim:
+      claimName: my-pvc
+```
+
+This pod object will mount the PV that was created in step 1 to the `/mnt/pvs/my-pv` path in the container.
+
+4. **Apply the PV, PVC, and pod objects to the Kubernetes cluster.**
+
+```
+kubectl apply -f pv.yaml
+kubectl apply -f pvc.yaml
+kubectl apply -f pod.yaml
+```
+
+Once the PV, PVC, and pod objects have been applied, the Kubernetes cluster will provision the PV and attach it to the pod. You can then access the PV from the container in the pod.
+
+For example, the following command will start a web server on the PV that was created in step 1:
+
+```
+kubectl exec my-pod -- nginx -g 'daemon off;'
+```
+
+You can then access the web server at the following URL:
+
+```
+http://<node-ip>:<node-port>/
+```
+
+where `<node-ip>` is the IP address of the node that the pod is running on and `<node-port>` is the port that the pod is exposing.
+
+Please note that this is a basic example of how to create a PV, PVC, and pod in Kubernetes. There are many other options and configurations that you can use. For more information, please see the Kubernetes documentation.
