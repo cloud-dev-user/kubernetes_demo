@@ -1,0 +1,87 @@
+
+
+1. **Deploy an application:** Deploy a simple application to Kubernetes, such as the following:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: nginx:latest
+```
+
+2. **Verify the deployment:** Use the `kubectl get deployment` command to verify that the deployment is running and that all of the pods are ready:
+
+```
+kubectl get deployment my-app
+```
+
+3. **Perform a rolling update:** Update the deployment spec to use a new image, such as the following:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: nginx:latest-alpine
+```
+
+Then, apply the updated deployment spec to the Kubernetes cluster:
+
+```
+$ kubectl apply -f deployment.yaml
+```
+
+4. **Verify the rolling update:** Use the `kubectl rollout status deployment my-app` command to monitor the rolling update process. Once the update is complete, all of the pods will be running the new image.
+
+5. **Rollback the update:** If you are not satisfied with the new version of the application, you can roll back to the previous version using the following command:
+
+```
+$ kubectl rollout undo deployment my-app
+```
+
+This will recreate the deployment using the previous revision.
+
+6. **Verify the rollback:** Use the `kubectl get deployment my-app` command to verify that the deployment has rolled back to the previous version.
+
+7. **Recreate the deployment:** If you need to recreate the deployment from scratch, you can use the following command:
+
+```
+$ kubectl delete deployment my-app
+```
+
+This will delete the deployment.
+
+Then, you can create the deployment again using the same deployment spec:
+
+```
+$ kubectl create -f deployment.yaml
+```
+
+8. **Verify the recreation:** Use the `kubectl get deployment my-app` command to verify that the deployment has been recreated.
+
+By following these steps, you can verify the rolling updates, rollback, and recreate concepts in Kubernetes.
