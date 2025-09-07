@@ -417,14 +417,6 @@ git push -u origin main
 
 ---
 
-## Next steps & suggestions for trainers
-
-- Convert labs into short challenges: e.g., "Break the readiness probe and make the Service unavailable — then fix it."
-- Add a small app (node/express) that exposes `/healthz` and trivial endpoints so students can experiment with realistic probes.
-- Add metrics (Prometheus exporter) and show autoscaling with HPA.
-
----
-
 If you want, I can:
 - Convert this README + manifests into a ready-to-download ZIP file, or
 - Create the repository on GitHub for you (I can provide the `git` commands and the repo contents so you can copy/paste), or
