@@ -1,6 +1,6 @@
 # Testing Kubernetes
 
-1. Deploy nginx application 
+1. Deploy nginx application .
 
   $ kubectl create deployment nginx-app --image=nginx --replicas=2
 
